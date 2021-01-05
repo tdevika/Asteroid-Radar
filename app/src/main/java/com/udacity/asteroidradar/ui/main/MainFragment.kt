@@ -1,5 +1,7 @@
 package com.udacity.asteroidradar.ui.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -13,11 +15,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import com.udacity.asteroidradar.AsteroidApplication
+import com.udacity.asteroidradar.MainActivity
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.data.Asteroid
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
 import com.udacity.asteroidradar.util.AsteroidViewModelFactory
 import javax.inject.Inject
+
 
 class MainFragment : Fragment(), ItemClickListener {
     @Inject
@@ -46,7 +50,6 @@ class MainFragment : Fragment(), ItemClickListener {
         setRecycler()
         setObserver()
         setHasOptionsMenu(true)
-
         return binding.root
     }
 
@@ -89,11 +92,30 @@ class MainFragment : Fragment(), ItemClickListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.groupId == R.id.multi_language)
+            if (!item.isChecked) {
+                item.isChecked = true
+                when (item.itemId) {
+                    R.id.english -> setLocate("en")
+                    R.id.kannada -> setLocate("kn")
+                    else -> setLocate("de")
+                }
+            }
         when (item.itemId) {
             R.id.show_all_menu -> viewModel.getAllAsteroids()
             R.id.show_rent_menu -> viewModel.getTodayAsteroids()
         }
-        return true
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setLocate(lang: String) {
+        val sharedPref = activity?.getSharedPreferences(
+            "Settings", Context.MODE_PRIVATE
+        )
+        sharedPref?.edit()?.putString("Language", lang)?.apply()
+        startActivity(Intent(requireContext(), MainActivity::class.java))
+        requireActivity().finish()
     }
 
     override fun onClick(asteroid: Asteroid) {
