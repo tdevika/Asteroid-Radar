@@ -2,6 +2,7 @@ package com.udacity.asteroidradar.data.injection.scope
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
+import javax.inject.Qualifier
 import kotlin.reflect.KClass
 
 @MustBeDocumented
@@ -9,3 +10,4 @@ import kotlin.reflect.KClass
 @Retention(AnnotationRetention.RUNTIME)
 @MapKey
 annotation class ViewModelScope(val value: KClass<out ViewModel>)
+

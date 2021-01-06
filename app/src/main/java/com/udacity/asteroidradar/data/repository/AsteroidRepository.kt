@@ -20,20 +20,22 @@ class AsteroidRepository @Inject constructor(
     private val apiService: ApiService,
     private val asteroidDao: AsteroidDao
 ) {
-    fun getAsteroidsFromServer() {
-        try {
-            val call = apiService.getAsteroidsFromServer()
-            val response = call.execute()
-            response.body()?.let {
-                val asteroids = parseAsteroidsJsonResult(JSONObject(it))
-                if (asteroids.isNotEmpty()) {
-                    asteroidDao.setAsteroidInDB(asteroids)
-                } else {
-                    asteroidDao.setAsteroidInDB(emptyList())
+   suspend fun getAsteroidsFromServer() {
+        withContext(Dispatchers.IO) {
+            try {
+                val call = apiService.getAsteroidsFromServer()
+                val response = call.execute()
+                response.body()?.let {
+                    val asteroids = parseAsteroidsJsonResult(JSONObject(it))
+                    if (asteroids.isNotEmpty()) {
+                        asteroidDao.setAsteroidInDB(asteroids)
+                    } else {
+                        asteroidDao.setAsteroidInDB(emptyList())
+                    }
                 }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
         }
     }
 

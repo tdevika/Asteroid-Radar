@@ -20,6 +20,7 @@ import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.data.Asteroid
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
 import com.udacity.asteroidradar.util.AsteroidViewModelFactory
+import com.udacity.asteroidradar.util.checkConnection
 import javax.inject.Inject
 
 
@@ -51,6 +52,15 @@ class MainFragment : Fragment(), ItemClickListener {
         setObserver()
         setHasOptionsMenu(true)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if(checkConnection(requireContext())) {
+            viewModel.load()
+        }else {
+            viewModel.getAsteroidsFromToday()
+        }
     }
 
 
