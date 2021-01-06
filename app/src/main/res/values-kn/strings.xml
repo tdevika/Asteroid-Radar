@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ಕ್ಷುದ್ರಗ್ರಹ ರಾಡಾರ್</string>
+    <string name="next_week_asteroids">ವಾರ ಪ್ರದರ್ಶನ ಕ್ಷುದ್ರಗ್ರಹಗಳು</string>
+    <string name="today_asteroids">ಇಂದು ಕ್ಷುದ್ರಗ್ರಹಗಳನ್ನು ನೋಡಿ</string>
+    <string name="saved_asteroids">ಉಳಿಸಿದ ಕ್ಷುದ್ರಗ್ರಹಗಳನ್ನು ವೀಕ್ಷಿಸಿ</string>
+    <string name="close_approach_data_title">ಆಗಮನದ ದಿನಾಂಕವನ್ನು ಮುಚ್ಚಿ</string>
+    <string name="absolute_magnitude_title">ಸಂಪೂರ್ಣ ಶ್ರೇಷ್ಠತೆ</string>
+    <string name="estimated_diameter_title">ಅಂದಾಜು ವ್ಯಾಸ</string>
+    <string name="relative_velocity_title">ಸಾಪೇಕ್ಷ ವೇಗ</string>
+    <string name="distance_from_earth_title">ಭೂಮಿಯಿಂದ ದೂರ</string>
+    <string name="astronomical_unit_format">%f au</string>
+    <string name="km_unit_format">%f km</string>
+    <string name="km_s_unit_format">%f km/s</string>
+    <string name="image_of_the_day">ದಿನದ ಚಿತ್ರ</string>
+    <string name="astronomica_unit_explanation">
+ಖಗೋಳ ಘಟಕ (u) ಉದ್ದದ ಒಂದು ಘಟಕವಾಗಿದ್ದು, ಭೂಮಿಯಿಂದ ಸೂರ್ಯನಿಗೆ ಸರಿಸುಮಾರು ದೂರ ಮತ್ತು ಸುಮಾರು 150 ದಶಲಕ್ಷ ಕಿಲೋಮೀಟರ್ (93 ದಶಲಕ್ಷ ಮೈಲಿಗಳು).</string>
+    <string name="astronomical_unit_explanation_button">ಖಗೋಳ ಘಟಕದ ವ್ಯಾಖ್ಯಾನ</string>
+    <string name="potentially_hazardous_asteroid_image">ಅಪಾಯಕಾರಿ ಕ್ಷುದ್ರಗ್ರಹ ಚಿತ್ರ</string>
+    <string name="not_hazardous_asteroid_image">ಅಪಾಯಕಾರಿ ಕ್ಷುದ್ರಗ್ರಹ ಚಿತ್ರವಲ್ಲ</string>
+    <string name="this_is_nasa_s_picture_of_day_showing_nothing_yet">ನಾಸಾದ ದೈನಂದಿನ ಚಿತ್ರ ಇದು ಇನ್ನೂ ಏನನ್ನೂ ತೋರಿಸುವುದಿಲ್ಲt</string>
+    <string name="nasa_picture_of_day_content_description_format">ನಾಸಾದಿಂದ ಹಗಲಿನ ಚಿತ್ರ:% s</string>
+</resources>
