@@ -2,21 +2,11 @@ package com.udacity.asteroidradar
 
 import android.app.Application
 import androidx.work.Configuration
-import androidx.work.Constraints
-import androidx.work.Data
-import androidx.work.NetworkType
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
 import com.udacity.asteroidradar.data.injection.component.AppComponent
 import com.udacity.asteroidradar.data.injection.component.DaggerAppComponent
-import com.udacity.asteroidradar.ui.main.worker.UpdateDataWorker
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.lang.Appendable
 import javax.inject.Inject
 
-class AsteroidApplication:Application() ,Configuration.Provider {
+class AsteroidApplication : Application(), Configuration.Provider {
 
     @Inject
     lateinit var workerConfiguration: Configuration
@@ -31,6 +21,7 @@ class AsteroidApplication:Application() ,Configuration.Provider {
         // We pass the applicationContext that will be used as Context in the graph
         return DaggerAppComponent.factory().create(applicationContext)
     }
+
     override fun onCreate() {
         super.onCreate()
         daggerAppComponent.inject(this)

@@ -30,7 +30,6 @@ class MainFragment : Fragment(), ItemClickListener {
 
     private lateinit var viewModel: MainViewModel
 
-
     lateinit var asteroidAdapter: AsteroidAdapter
 
     lateinit var binding: FragmentMainBinding
@@ -56,13 +55,12 @@ class MainFragment : Fragment(), ItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(checkConnection(requireContext())) {
+        if (checkConnection(requireContext())) {
             viewModel.load()
-        }else {
+        } else {
             viewModel.getAsteroidsFromToday()
         }
     }
-
 
     private fun setRecycler() {
         asteroidAdapter = AsteroidAdapter(this)
@@ -91,6 +89,7 @@ class MainFragment : Fragment(), ItemClickListener {
                         Picasso.with(context).load(it.url).into(binding.activityMainImageOfTheDay)
                     }
                 }
+                binding.activityMainImageOfTheDay.contentDescription=it.title
                 binding.textView.text = it.title
             }
         })
@@ -114,6 +113,7 @@ class MainFragment : Fragment(), ItemClickListener {
         when (item.itemId) {
             R.id.show_all_menu -> viewModel.getAllAsteroids()
             R.id.show_rent_menu -> viewModel.getTodayAsteroids()
+            else ->viewModel.getAsteroidsFromToday()
         }
 
         return super.onOptionsItemSelected(item)

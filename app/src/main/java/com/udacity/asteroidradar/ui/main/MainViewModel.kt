@@ -10,10 +10,8 @@ import com.udacity.asteroidradar.data.Results
 import com.udacity.asteroidradar.data.repository.AsteroidRepository
 import com.udacity.asteroidradar.ui.main.worker.WorkRequest
 import com.udacity.asteroidradar.util.Constants
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -28,13 +26,6 @@ class MainViewModel @Inject constructor(private val repository: AsteroidReposito
         workRequest.updateDataWorkRequest()
         setPictureOfDay()
         getAsteroidsFromToday()
-    }
-
-    private fun updateAsteroid() {
-        viewModelScope.launch {
-                repository.getAsteroidsFromServer()
-                getAsteroidsFromToday()
-        }
     }
 
     private fun setPictureOfDay() {
